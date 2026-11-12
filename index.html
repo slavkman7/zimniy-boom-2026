@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Зимний бум 2026 — городской спецпроект «ПроГород Сыктывкар» × ресторан «Спасский»</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Caveat:wght@600&display=swap" rel="stylesheet">
+<style>
+/* ==========================================================
+   ЗИМНИЙ БУМ 2026 · ПроГород Сыктывкар × ресторан «Спасский»
+   ФАЙЛЫ САЙТА (загрузить папку zimniy-boom целиком):
+     index.html
+     img/progorod-white.png  — логотип ПроГород (PNG клиента)
+     img/hero.png  img/tool-1.png … img/tool-4.png
+     img/price.png img/footer.png
+   Все пути локальные — сайт работает без внешних ссылок.
+   ========================================================== */
+:root{
+  --ink:#17334f;
+  --blue:#23507e;
+  --muted:#5a6b80;
+  --paper:#f4f6f9;
+  --card:#edf1f6;
+  --cream:#f2e3bd;
+  --cream-2:#f7e8c3;
+  --white:#fff;
+  --font:'Manrope',sans-serif;
+  --script:'Caveat',cursive;
+  --thumb-w:150px;   /* единая ширина миниатюр */
+  --thumb-h:100px;   /* единая высота миниатюр */
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);background:var(--paper);color:var(--ink);line-height:1.6;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{display:block}
+
+/* ---------- ЛОГОТИП ПРОГОРОД: ОРИГИНАЛЬНЫЙ PNG ---------- */
+.pg-img{height:46px;width:auto;display:block}
+.pg-img--big{height:68px}
+
+/* векторная копия ТОЛЬКО как запасной вариант, если PNG не загрузился */
+.pg-logo{display:inline-flex;flex-direction:column;line-height:1;color:#fff}
+.pg-logo .pg-city{font-size:9px;font-weight:600;letter-spacing:.1em;opacity:.9;margin-bottom:3px}
+.pg-logo .pg-word{display:flex;align-items:baseline;font-size:23px;letter-spacing:.01em}
+.pg-logo .pro{font-weight:500}
+.pg-logo .gorod{font-weight:800;position:relative}
+.pg-logo .gorod::after{content:'';position:absolute;width:.13em;height:.13em;background:currentColor;top:-.02em;right:.09em;box-shadow:.19em -.15em 0 -.03em currentColor,.04em -.28em 0 -.05em currentColor}
+.pg-logo--big .pg-word{font-size:34px}
+.pg-logo--big .pg-city{font-size:12px}
+
+.brand-divider{width:1px;height:36px;background:rgba(255,255,255,.55)}
+.brand-label{color:#fff;font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;line-height:1.45}
+
+/* ---------- ЛОГОТИП КЛИЕНТА ---------- */
+.sp-logo{display:inline-flex;flex-direction:column;line-height:1;text-align:right}
+.sp-logo b{font-family:Georgia,'Times New Roman',serif;font-weight:700;font-size:22px;letter-spacing:.03em;color:var(--cream)}
+.sp-logo span{font-size:8.5px;letter-spacing:.26em;text-transform:uppercase;color:rgba(255,255,255,.75);margin-top:4px}
+
+/* ---------- HERO ---------- */
+.hero{
+  position:relative;min-height:96vh;display:flex;flex-direction:column;
+  padding:26px clamp(20px,4vw,56px) 0;color:#fff;overflow:hidden;
+  background:
+    linear-gradient(90deg,rgba(9,16,30,.9) 0%,rgba(9,16,30,.62) 38%,rgba(9,16,30,.18) 72%,rgba(9,16,30,.42) 100%),
+    linear-gradient(0deg,rgba(9,16,30,.75) 0%,rgba(9,16,30,0) 34%),
+    url('img/hero.png') right center/cover no-repeat;
+}
+.snow{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.snow i{position:absolute;top:-40px;color:#fff;font-style:normal;animation:fall linear infinite;text-shadow:0 0 6px rgba(255,255,255,.5)}
+@keyframes fall{to{transform:translateY(115vh) rotate(360deg)}}
+
+.hero__top{position:relative;z-index:3;display:flex;justify-content:space-between;align-items:flex-start;gap:20px}
+.hero__brand{display:flex;align-items:center;gap:16px}
+
+.hero__body{position:relative;z-index:3;margin-top:clamp(40px,7vh,90px);max-width:760px}
+.hero h1{font-size:clamp(2.5rem,6.4vw,4.8rem);font-weight:800;line-height:1.04;letter-spacing:-.015em}
+.hero h1 .hl{color:var(--cream)}
+.hero__sub{margin-top:22px;font-size:clamp(1rem,1.5vw,1.2rem);font-weight:500;color:rgba(255,255,255,.94);max-width:460px}
+
+.hero__facts{position:relative;z-index:3;margin-top:auto;padding:34px 0 40px;display:flex;gap:clamp(20px,4vw,64px);flex-wrap:wrap}
+.fact{display:flex;align-items:center;gap:16px;padding-right:clamp(20px,4vw,64px);border-right:1px solid rgba(255,255,255,.28)}
+.fact:last-child{border-right:none;padding-right:0}
+.fact__ico{flex:0 0 46px;height:46px;border:1.6px solid rgba(255,255,255,.9);border-radius:50%;display:flex;align-items:center;justify-content:center}
+.fact__ico svg{stroke:#fff;fill:none;stroke-width:1.7}
+.fact__label{font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.8)}
+.fact__value{font-size:15px;font-weight:800;margin-top:2px}
+
+/* ---------- СРЕДНЯЯ СЕКЦИЯ: КОЛОНКИ ОДНОЙ ВЫСОТЫ ---------- */
+.middle{position:relative;padding:76px clamp(20px,4vw,56px) 90px;background:var(--paper);overflow:hidden}
+.middle__decor{position:absolute;left:-30px;bottom:-20px;opacity:.55;pointer-events:none}
+.middle__grid{
+  position:relative;max-width:1240px;margin:0 auto;
+  display:grid;grid-template-columns:.92fr 1.22fr .82fr;
+  gap:clamp(28px,3.5vw,52px);
+  align-items:stretch;
+}
+.h2{font-size:clamp(1.5rem,2.6vw,2.05rem);font-weight:800;line-height:1.15;letter-spacing:-.01em}
+.middle p{font-size:15px;color:var(--muted)}
+.middle p b{color:var(--ink)}
+
+.col-why{display:flex;flex-direction:column}
+.col-why p+p{margin-top:12px}
+.col-why .swoosh{margin-top:auto;margin-bottom:18px}
+.heart-note{display:flex;gap:14px;align-items:flex-start;font-size:15px;color:var(--ink);font-weight:500}
+.heart-note svg{flex:0 0 30px;stroke:var(--ink);fill:none;stroke-width:1.6}
+
+.col-tools{display:flex;flex-direction:column;gap:20px}
+.col-tools .sub{font-size:15px;font-weight:700;color:var(--ink);margin:6px 0 2px}
+.tool{
+  flex:1;
+  display:grid;
+  grid-template-columns:var(--thumb-w) 24px 1fr;
+  gap:16px;
+  align-items:start;
+}
+.tool__thumb{
+  width:var(--thumb-w);
+  height:var(--thumb-h);
+  object-fit:cover;
+  object-position:center;
+  border-radius:12px;
+  box-shadow:0 6px 18px rgba(23,51,79,.16);
+  background:#dfe7f0;
+}
+.tool__ico{margin-top:2px;width:24px}
+.tool__ico svg{stroke:var(--blue);fill:none;stroke-width:1.7}
+.tool h4{font-size:14.5px;font-weight:800;margin-bottom:4px}
+.tool p{font-size:12.5px;line-height:1.55}
+
+.reach{
+  background:var(--card);border-radius:20px;padding:28px 26px 0;
+  overflow:hidden;position:relative;
+  display:flex;flex-direction:column;
+}
+.reach h3{font-size:1.15rem;font-weight:800;margin-bottom:20px}
+.reach-row{display:flex;align-items:center;gap:14px;padding:10px 0}
+.reach-ico{flex:0 0 44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:15px}
+.reach-ico.vk{background:#0077ff}
+.reach-ico.tg{background:#229ed9}
+.reach-ico.max{background:linear-gradient(135deg,#8a6cff,#3f8cff);font-size:10px;letter-spacing:.04em}
+.reach-ico.web{background:#fff;border:1.5px solid #d4dce6}
+.reach-row .cap{font-size:12.5px;color:var(--muted)}
+.reach-row .num{font-size:21px;font-weight:800;line-height:1.15}
+.reach-sep{border-top:1px solid #d9e1ea;margin:12px 0}
+.reach-row .small{font-size:11px;color:var(--muted);line-height:1.4}
+.reach__trees{margin-top:auto;margin-left:-26px;margin-right:-26px;display:block;width:calc(100% + 52px)}
+
+/* ---------- ЦЕНА ---------- */
+.price-wrap{padding:0 clamp(20px,4vw,56px) 90px;background:var(--paper)}
+.price{
+  max-width:1240px;margin:0 auto;border-radius:26px;overflow:hidden;color:#fff;position:relative;
+  background:
+    linear-gradient(90deg,rgba(12,10,8,.93) 0%,rgba(12,10,8,.78) 45%,rgba(12,10,8,.5) 100%),
+    url('img/price.png') center/cover no-repeat;
+  display:grid;grid-template-columns:1fr 1.1fr .82fr;gap:clamp(26px,3vw,48px);
+  padding:clamp(34px,4vw,56px) clamp(26px,3.6vw,54px);align-items:center;
+}
+.price__label{font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.9)}
+.price__sum{font-size:clamp(2.8rem,5.6vw,4.4rem);font-weight:800;line-height:1;margin:14px 0 12px;letter-spacing:-.02em}
+.price__sum span{font-size:.5em;font-weight:800}
+.price__per{font-size:16px;font-weight:800;line-height:1.45}
+.includes h4{font-size:15px;font-weight:800;margin-bottom:14px}
+.includes li{list-style:none;display:flex;gap:12px;padding:6px 0;font-size:13.5px;font-weight:500;color:rgba(255,255,255,.94)}
+.includes li::before{content:'✓';color:var(--cream);font-weight:800}
+.month{background:linear-gradient(160deg,#fbf2d8,var(--cream-2));border-radius:18px;padding:26px 24px;text-align:center;color:var(--ink);box-shadow:0 16px 44px rgba(0,0,0,.35)}
+.month .t{font-size:14px;font-weight:800;line-height:1.4}
+.month .v{font-size:clamp(2rem,3.4vw,2.7rem);font-weight:800;margin:6px 0 2px}
+.month .p{font-size:14px;font-weight:800}
+
+/* ---------- ПОДВАЛ ---------- */
+.footer{
+  position:relative;color:#fff;padding:64px clamp(20px,4vw,56px) 34px;overflow:hidden;
+  background:
+    linear-gradient(180deg,rgba(16,26,44,.62) 0%,rgba(16,26,44,.18) 42%,rgba(16,26,44,.66) 100%),
+    url('img/footer.png') center bottom/cover no-repeat;
+}
+.footer__top{max-width:1240px;margin:0 auto;display:flex;justify-content:space-between;align-items:flex-start;gap:32px;flex-wrap:wrap}
+.footer__msg{display:flex;gap:14px;max-width:300px;font-size:13px;font-weight:600;line-height:1.55}
+.footer__msg svg{flex:0 0 34px;stroke:#fff;fill:none;stroke-width:1.5}
+.footer__script{position:relative;font-family:var(--script);font-weight:600;font-size:clamp(1.7rem,3.2vw,2.5rem);line-height:1.15;color:var(--cream-2);transform:rotate(-4deg);padding-right:44px}
+.footer__script svg{position:absolute;left:6px;bottom:-14px}
+.footer__script .flake{position:absolute;right:0;top:34px;font-size:20px;color:var(--cream-2)}
+.footer__bottom{max-width:1240px;margin:56px auto 0;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+.footer__brand{display:flex;align-items:center;gap:16px}
+.footer__contacts{font-size:12.5px;font-weight:600;color:rgba(255,255,255,.85);display:flex;gap:20px;flex-wrap:wrap}
+.footer__contacts a{color:var(--cream);font-weight:800}
+.footer__contacts a:hover{text-decoration:underline}
+
+.rev{opacity:0;transform:translateY(24px);transition:.7s cubic-bezier(.2,.7,.3,1)}
+.rev.on{opacity:1;transform:none}
+
+@media(max-width:1024px){
+  .middle__grid{grid-template-columns:1fr 1fr}
+  .reach{grid-column:1/-1;max-width:560px}
+  .price{grid-template-columns:1fr;gap:30px}
+}
+@media(max-width:720px){
+  :root{--thumb-w:118px;--thumb-h:84px}
+  .middle__grid{grid-template-columns:1fr}
+  .col-why .swoosh{margin-top:26px}
+  .hero__facts{flex-direction:column;gap:18px}
+  .fact{border-right:none;border-bottom:1px solid rgba(255,255,255,.2);padding:0 0 16px}
+  .fact:last-child{border-bottom:none}
+  .sp-logo{display:none}
+  .footer__top{flex-direction:column}
+  .footer__script{transform:none}
+  .pg-img{height:38px}
+  .pg-img--big{height:52px}
+}
+</style>
+</head>
+<body>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="snow" data-snow></div>
+
+  <div class="hero__top">
+    <div class="hero__brand">
+      <!-- ЛОГОТИП ПРОГОРОД: img/progorod-white.png -->
+      <img class="pg-img" src="img/progorod-white.png" alt="ПроГород Сыктывкар" data-fallback="small">
+      <div class="brand-divider"></div>
+      <div class="brand-label">Городской<br>спецпроект</div>
+    </div>
+    <div class="sp-logo"><b>Спасский</b><span>ресторан · Сыктывкар</span></div>
+  </div>
+
+  <div class="hero__body">
+    <h1>Зимний бум:<br><span class="hl">тест-драйв</span><br><span class="hl">кафе и ресторанов</span></h1>
+    <p class="hero__sub">Вкусные эмоции, новые гости и&nbsp;полные залы. Доверие горожан — и&nbsp;особое место для ресторана «Спасский».</p>
+  </div>
+
+  <div class="hero__facts">
+    <div class="fact">
+      <div class="fact__ico"><svg width="22" height="22" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></div>
+      <div><div class="fact__label">Период размещения</div><div class="fact__value">Декабрь–Февраль</div></div>
+    </div>
+    <div class="fact">
+      <div class="fact__ico"><svg width="22" height="22" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M10 8.6l5.6 3.4-5.6 3.4z"/></svg></div>
+      <div><div class="fact__label">Формат</div><div class="fact__value">Видео + лонгрид + промо</div></div>
+    </div>
+    <div class="fact">
+      <div class="fact__ico"><svg width="22" height="22" viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg></div>
+      <div><div class="fact__label">Участие</div><div class="fact__value">10 заведений<br>кафе и ресторанов</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= СРЕДНЯЯ СЕКЦИЯ ================= -->
+<section class="middle">
+  <svg class="middle__decor" width="260" height="220" viewBox="0 0 260 220" fill="none">
+    <g stroke="#bcd3ea" stroke-width="2" stroke-linecap="round">
+      <path d="M60 200V60M60 60l-26 26M60 60l26 26M60 100l-34 34M60 100l34 34M60 140l-24 24M60 140l24 24"/>
+      <path d="M150 210V110M150 110l-20 20M150 110l20 20M150 145l-26 26M150 145l26 26"/>
+      <circle cx="205" cy="70" r="3" fill="#bcd3ea" stroke="none"/><circle cx="230" cy="120" r="2.4" fill="#bcd3ea" stroke="none"/><circle cx="190" cy="160" r="2" fill="#bcd3ea" stroke="none"/>
+    </g>
+  </svg>
+
+  <div class="middle__grid">
+    <div class="col-why rev">
+      <h2 class="h2">Почему сейчас?</h2>
+      <p style="margin-top:16px"><b>Зима —</b> лучшее время, чтобы согреть гостей вкусом, атмосферой и&nbsp;эмоциями. Люди ищут места, где можно отдохнуть, встретиться с&nbsp;близкими и&nbsp;провести время с&nbsp;удовольствием.</p>
+      <p>Новогодние корпоративы, семейные ужины, свидания и&nbsp;встречи друзей — весь сезон горожане выбирают, куда пойти. И&nbsp;северная кухня «Спасского» — именно то, что хочется зимой.</p>
+      <svg class="swoosh" width="70" height="26" viewBox="0 0 70 26" fill="none"><path d="M3 22C18 6 40 4 67 8" stroke="#9fc0e0" stroke-width="3" stroke-linecap="round"/></svg>
+      <div class="heart-note">
+        <svg width="30" height="30" viewBox="0 0 24 24"><path d="M12 20s-7.5-4.7-7.5-10A4.4 4.4 0 0 1 12 7a4.4 4.4 0 0 1 7.5 3c0 5.3-7.5 10-7.5 10z"/></svg>
+        <span>Это не реклама.<br>Это искренние эмоции и&nbsp;настоящий опыт.</span>
+      </div>
+    </div>
+
+    <div class="col-tools rev">
+      <h2 class="h2">Что получает<br>ваш бизнес?</h2>
+      <div class="sub">4 инструмента продвижения</div>
+
+      <div class="tool">
+        <img class="tool__thumb" src="img/tool-1.png" alt="Видео-тест-драйв">
+        <div class="tool__ico"><svg width="24" height="24" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10 9.2l5 2.8-5 2.8z"/></svg></div>
+        <div><h4>Видео-тест-драйв</h4><p>Динамичный видеоклип с живыми эмоциями, без рекламы — только настоящий опыт гостей «Спасского».</p></div>
+      </div>
+
+      <div class="tool">
+        <img class="tool__thumb" src="img/tool-2.png" alt="Городской гид">
+        <div class="tool__ico"><svg width="24" height="24" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/></svg></div>
+        <div><h4>Городской гид</h4><p>Ваш раздел в тематическом лонгриде на ПроГороде с ресторанными рекомендациями. Размещение на всё время проекта.</p></div>
+      </div>
+
+      <div class="tool">
+        <img class="tool__thumb" src="img/tool-3.png" alt="Промо на площадках">
+        <div class="tool__ico"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M4 10v4l9 4V6l-9 4zM13 8.5l6-2.5v12l-6-2.5M6 14v5"/></svg></div>
+        <div><h4>Промо на площадках «Про Города»</h4><p>Публикации и видео на трёх платформах: ВКонтакте, Telegram, MAX.</p></div>
+      </div>
+
+      <div class="tool">
+        <img class="tool__thumb" src="img/tool-4.png" alt="Готовый контент">
+        <div class="tool__ico"><svg width="24" height="24" viewBox="0 0 24 24"><rect x="4" y="7" width="16" height="13" rx="2"/><path d="M9 7V5h6v2M12 11v5M9.5 13.5l2.5 2.5 2.5-2.5"/></svg></div>
+        <div><h4>Готовый контент</h4><p>Видео и материалы можно использовать в своих соцсетях и рекламе.</p></div>
+      </div>
+    </div>
+
+    <aside class="reach rev">
+      <h3>Ваш охват</h3>
+      <div class="reach-row"><div class="reach-ico vk">VK</div><div><div class="cap">ВКонтакте</div><div class="num">136 000+</div></div></div>
+      <div class="reach-row"><div class="reach-ico tg"><svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M21.9 4.4l-3.1 14.8c-.2 1-.8 1.3-1.7.8l-4.8-3.5-2.3 2.2c-.3.3-.5.5-1 .5l.3-4.9L18.4 6c.4-.3-.1-.5-.6-.2L6.7 12.9l-4.7-1.5c-1-.3-1-1 .2-1.5l18.4-7.1c.9-.3 1.6.2 1.3 1.6z"/></svg></div><div><div class="cap">Telegram</div><div class="num">17 000+</div></div></div>
+      <div class="reach-row"><div class="reach-ico max">MAX</div><div><div class="cap">MAX</div><div class="num">7 000+</div></div></div>
+      <div class="reach-sep"></div>
+      <div class="reach-row">
+        <div class="reach-ico web"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#23507e" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg></div>
+        <div><div class="cap">Сайт «ПроГород»</div><div class="num">250 000+</div><div class="small">уникальных посетителей<br>ежедневно</div></div>
+      </div>
+      <svg class="reach__trees" height="72" viewBox="0 0 400 72" preserveAspectRatio="none">
+        <g fill="#dce7f2">
+          <path d="M20 72l14-30 14 30zM34 52l10-22 10 22zM64 72l16-38 16 38zM104 72l12-26 12 26zM132 72l16-40 16 40zM170 72l12-24 12 24zM198 72l16-36 16 36zM238 72l12-26 12 26zM266 72l16-40 16 40zM304 72l12-24 12 24zM332 72l16-36 16 36zM372 72l12-26 12 26z"/>
+        </g>
+      </svg>
+    </aside>
+  </div>
+</section>
+
+<!-- ================= ЦЕНА ================= -->
+<div class="price-wrap">
+  <div class="price rev">
+    <div>
+      <div class="price__label">Участие в проекте</div>
+      <div class="price__sum">25 500 <span>₽</span></div>
+      <div class="price__per">за весь проект<br>Декабрь–Февраль</div>
+    </div>
+    <ul class="includes">
+      <h4>В стоимость входит:</h4>
+      <li>Съёмка и монтаж видеоклипа</li>
+      <li>Текстовый блок до 1500 символов с ссылками</li>
+      <li>Публикации во ВКонтакте, Telegram и MAX</li>
+      <li>Размещение в городском гиде</li>
+      <li>Готовый контент для ваших соцсетей</li>
+    </ul>
+    <div class="month">
+      <div class="t">Также доступна<br>оплата помесячно</div>
+      <div class="v">8 500 ₽</div>
+      <div class="p">в месяц</div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= ПОДВАЛ ================= -->
+<footer class="footer">
+  <div class="footer__top">
+    <div class="footer__msg">
+      <svg width="34" height="34" viewBox="0 0 24 24"><path d="M12 2l8 4.6v9.2L12 22l-8-6.2V6.6z"/><path d="M12 8v8M9 10.5l6 3M15 10.5l-6 3"/></svg>
+      <span>Станьте частью городского проекта, который вдохновляет на&nbsp;вкусную жизнь.</span>
+    </div>
+    <div class="footer__script">
+      Вкусные истории —<br>начинаются здесь
+      <svg width="240" height="16" viewBox="0 0 240 16" fill="none"><path d="M4 11C60 3 150 14 236 6" stroke="#f7e8c3" stroke-width="3" stroke-linecap="round"/></svg>
+      <span class="flake">❄</span>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <div class="footer__brand">
+      <!-- ЛОГОТИП ПРОГОРОД, крупная версия: img/progorod-white.png -->
+      <img class="pg-img pg-img--big" src="img/progorod-white.png" alt="ПроГород Сыктывкар" data-fallback="big">
+      <div class="brand-divider"></div>
+      <div class="brand-label">Городской<br>спецпроект</div>
+    </div>
+    <div class="footer__contacts">
+      <span>Ресторан «Спасский» — партнёр сезона</span>
+      <a href="tel:+78212391442">+7 (8212) 39-14-42</a>
+      <a href="mailto:reklama@pg11.ru">reklama@pg11.ru</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// снегопад в hero
+const box=document.querySelector('[data-snow]'),sym=['❄','❅','❆','✦'];
+for(let i=0;i<30;i++){
+  const s=document.createElement('i');
+  s.textContent=sym[Math.floor(Math.random()*sym.length)];
+  s.style.left=Math.random()*100+'%';
+  s.style.fontSize=(Math.random()*13+8)+'px';
+  s.style.opacity=(Math.random()*.55+.15).toFixed(2);
+  s.style.animationDuration=(Math.random()*9+7)+'s';
+  s.style.animationDelay=(-Math.random()*14)+'s';
+  box.appendChild(s);
+}
+// плавное появление
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.rev').forEach(el=>io.observe(el));
+// запасной вариант: если PNG-логотип не найден, подставляется векторная копия
+document.querySelectorAll('img[data-fallback]').forEach(img=>{
+  img.addEventListener('error',()=>{
+    const f=document.createElement('div');
+    f.className='pg-logo'+(img.dataset.fallback==='big'?' pg-logo--big':'');
+    f.innerHTML='<span class="pg-city">Сыктывкар</span><span class="pg-word"><span class="pro">ПРО</span><span class="gorod">ГОРОД</span></span>';
+    img.replaceWith(f);
+  },{once:true});
+});
+</script>
+</body>
+</html>
